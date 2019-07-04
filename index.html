@@ -1,1 +1,24 @@
-zzzz
+<html>
+<head>
+    <title>ZZB博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="ZZB博客" />
+    <meta name="description" content="ZZB博" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    </head>
+<body>
+    <script>
+        var ua = navigator.userAgent;
+        var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+        var isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+        var isAndroid= ua.match(/(Android)\s+([\d.]+)/);
+        var isMobile = isIphone || isAndroid;
+        if(isMobile) {
+            location.href = './phone/index.html';
+        }else{
+            location.href = './pc/index.html';
+        }
+    </script>
+    
+</body>
+</html> 
