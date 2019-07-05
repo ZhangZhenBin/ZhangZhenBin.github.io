@@ -8,11 +8,13 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
     <script src="../static/js/enterpc.js"></script>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://libs.baidu.com/jquerytools/1.2.7/jquery.tools.min.js"></script>
     <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src=" http://libs.baidu.com/json/json2/json2.js"></script>
+    <script src="http://libs.baidu.com/json/json2/json2.js"></script>
+    <script src="http://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="../static/js/common_func.js"></script>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- 头部CSS -->
     <style>
     body{
         background-color: #f0f0f0;
@@ -47,16 +49,35 @@
         font-size: 25px;
     }
     </style>
+    <style>
+
+    </style>
 </head>
-<body>
-    <div class="my_scrollview">
-        <div class="headview">
-            <div style="height:30px;width:100%;"></div>
-            <div class="head_image">
-                <img src="../data/images/head_image.jpg">
-            </div>
-            <div class="head_title">ZZB博客</div>
-        </div>
-    </div>
-</body>
+<!--<body>-->
+<!--    <div class="my_scrollview">-->
+<!--        <div class="headview">-->
+<!--            <div style="height:30px;width:100%;"></div>-->
+<!--            <div class="head_image">-->
+<!--                <img src="../data/images/head_image.jpg">-->
+<!--            </div>-->
+<!--            <div class="head_title">ZZB博客</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+
+<script>
+    $(document).ready(function(){
+        var url = "../data/file_data/acticle_list.txt";
+        var htmlobj= $.ajax({url:url,async:false})
+        alert(htmlobj.responseText);
+    });
+</script>
 </html>
+
+
+
+
+
+
+
+
