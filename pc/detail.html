@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>ZZB博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="ZZB博客" />
+    <meta name="description" content="ZZB博" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <script src="../static/js/enterpc.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="http://libs.baidu.com/json/json2/json2.js"></script>
+    <script src="http://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="http://libs.baidu.com/json/json2/json2.js"></script>
+    <script src="../static/js/common_func.js"></script>
+    <script src="https://cdn.bootcss.com/showdown/1.9.0/showdown.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"></link>
+    <style>
+        /* 头部CSS */
+        body{
+            background-color: #f0f0f0;
+        }
+        .my-scrollview{
+            height:auto;
+            width:800px;
+            margin: 0 auto;
+            background-color:#ffffff;
+        }
+        .my-scrollview .head-view{
+            height:200px;
+            width:100%;
+            background-color: #90EE90;
+        }
+        .my-scrollview .head-view .head-image{
+            height: 80px;
+            width: 80px;
+            margin: 0 auto;
+        }
+        .my-scrollview .head-view .head-image img{
+            height: 80px;
+            width: 80px;
+            border-radius: 40px;
+        }
+        .my-scrollview .head-view .head-title{
+            margin-top: 10px;
+            height: 25px;
+            width: 100%;
+            text-align: center;
+            color: #000000;
+            font-size: 25px;
+        }
+        .my-scrollview .head-view .head-subtitle{
+            margin-top: 15px;
+            height: 15px;
+            width: 100%;
+            text-align: center;
+            color: #333333;
+            font-size: 15px;
+        }
+
+        .my-scrollview .acticle-title{
+            width: 740px;
+            height: auto;
+            margin-left: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .my-scrollview .acticle-time{
+            width: 740px;
+            height: 30px;
+            margin-left: 30px;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #a0a0a0;
+            text-align: center;
+        }
+
+
+        .back-home{
+            position: absolute;
+            bottom: 60px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 30px;
+            background-color: #90EE90;
+            text-align: center;
+            font-size: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="my-scrollview">
+    <div class="head-view">
+        <div style="height:25px;width:100%;"></div>
+        <div class="head-image">
+            <img src="../data/images/head_image.jpg">
+        </div>
+        <div class="head-title">ZZB博客</div>
+        <div class="head-subtitle">生命太短暂，不要去做一些根本没有人想要的东西</div>
+    </div>
+
+    <div class="acticle-title"></div>
+    <div class="acticle-time"></div>
+
+</div>
+
+<div class="back-home" onclick="location.href='index.html'"><span class="glyphicon glyphicon-home"></span></div>
+
+</body>
+
+<script>
+    $(document).ready(function(){
+        // 获取文章数据
+        var url = "../data/file_data/acticle_list.txt";
+        var htmlobj= $.ajax({url:url,async:false});
+        var acticleList = JSON.parse(htmlobj.responseText);
+        console.log(acticleList);
+
+        // 解析数据
+        var acticleId = requestUrlGetQueryKey('id');
+        var acticleUp,acticleNext,acticleNow;
+        for(var i=0;i<acticleList.length;i++){
+            if(acticleId == acticleList[i].id){
+                if(i-1>=0){
+                    acticleUp = acticleList[i-1];
+                }
+                if(i+1<=acticleList.length-1){
+                    acticleNext = acticleList[i+1];
+                }
+                acticleNow = acticleList[i];
+            }
+        }
+
+        if(!acticleNow) {
+            location.href = "./index.html";
+        }
+        var acticleUrl = "../data/"+acticleNow.url;
+        var acticleHtml = $.ajax({url:url,async:false});
+        var acticleContext = htmlobj.responseText;
+        // 渲染html
+        $('.acticle-title').html(acticleNow.title);
+        $('.acticle-time').html(
+            '<span class="glyphicon glyphicon-calendar"></span> ' +acticleNow.time +
+            '&emsp;<span class="glyphicon glyphicon-user"></span> ZhangZhenBin' +
+            '&emsp;<span class="glyphicon glyphicon-book"></span> ' + acticleNow.category
+        )
+
+    });
+</script>
+</html>
+
+
+
+
+
+
+
+

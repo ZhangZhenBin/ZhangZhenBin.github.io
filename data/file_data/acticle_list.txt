@@ -1,14 +1,4 @@
 [
-{
-"id" : 1 ,
-"title" : "第1篇",
-"time" : "",
-"url" : ""
-},
-{
-"id" : 2 ,
-"title" : "第2篇",
-"time" : "",
-"url" : ""
-}
+{"id": 1, "title": "第1篇标题iOS", "category": "iOS", "time": "2018.08.01 10:11", "url": "file_detail/acticle_1.txt"},
+{"id": 2, "title": "第2篇标题JAVA", "category": "JAVA", "time": "2018.08.02 10:11", "url": "file_detail/acticle_2.txt"}
 ]

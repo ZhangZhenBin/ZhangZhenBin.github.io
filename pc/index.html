@@ -20,7 +20,7 @@
             background-color: #f0f0f0;
         }
         .my-scrollview{
-            height:500px;
+            height:auto;
             width:800px;
             margin: 0 auto;
             background-color:#ffffff;
@@ -41,26 +41,61 @@
             border-radius: 40px;
         }
         .my-scrollview .head-view .head-title{
-            margin-top: 15px;
+            margin-top: 10px;
             height: 25px;
             width: 100%;
             text-align: center;
             color: #000000;
             font-size: 25px;
         }
+        .my-scrollview .head-view .head-subtitle{
+            margin-top: 15px;
+            height: 15px;
+            width: 100%;
+            text-align: center;
+            color: #333333;
+            font-size: 15px;
+        }
 
         .my-scrollview .table-view{
             margin-top: 20px;
             width: 100%;
             height: auto;
-            background-color: red ;
         }
         .my-scrollview .table-view .table-cell{
             width: 100%;
             height: 80px;
-            background-color: red ;
+            background-color: white ;
         }
-        .my-scrollview table-view .table-line{
+        .my-scrollview .table-view .table-cell .title{
+            width: 740px;
+            height: 30px;
+            margin-left: 30px;
+            text-align: left;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 15px;
+            display:block;
+            word-break:keep-all;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .my-scrollview .table-view .table-cell .time-view{
+            width: 740px;
+            height: 30px;
+            margin-left: 30px;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #a0a0a0;
+            display:block;
+            word-break:keep-all;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .my-scrollview .table-view .table-line{
             width: 100%;
             height: 1px;
             background-color: #f0f0f0;
@@ -77,11 +112,12 @@
 <body>
 <div class="my-scrollview">
     <div class="head-view">
-        <div style="height:30px;width:100%;"></div>
+        <div style="height:25px;width:100%;"></div>
         <div class="head-image">
             <img src="../data/images/head_image.jpg">
         </div>
         <div class="head-title">ZZB博客</div>
+        <div class="head-subtitle">生命太短暂，不要去做一些根本没有人想要的东西</div>
     </div>
 
     <div class="table-view">
@@ -124,12 +160,26 @@
 
         // 加载数据
         function loadActicleToHtml(pageIndex) {
-            for(var i=0;i<10;i++){
-
+            var acticleHtml = "";
+            for(var i=0;i<15;i++){
+                var index = i+(pageIndex-1)*15;
+                if(index < totalActicle){
+                    acticleHtml += '' +
+                        '<a href="detail.html?id='+acticleList[index].id+'">' +
+                        '<div class="table-cell">' +
+                        '<div class="title">'+acticleList[index].title+'</div>' +
+                        '<div class="time-view">' +
+                        '<span class="glyphicon glyphicon-calendar"></span> ' + acticleList[index].time +
+                        '&emsp;<span class="glyphicon glyphicon-user"></span> ZhangZhenBin' +
+                        '&emsp;<span class="glyphicon glyphicon-book"></span> ' + acticleList[index].category +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="table-line"></div>' +
+                        '</a>';
+                }
             }
-
+            $('.table-view').html(acticleHtml)
         }
-
         selectPageIndex(1);
 
     });
