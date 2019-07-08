@@ -1,24 +1,195 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <title>ZZB博客</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="ZZB博客" />
     <meta name="description" content="ZZB博" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    </head>
-<body>
-    <script>
-        var ua = navigator.userAgent;
-        var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
-        var isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
-        var isAndroid= ua.match(/(Android)\s+([\d.]+)/);
-        var isMobile = isIphone || isAndroid;
-        if(isMobile) {
-            location.href = './phone/index.html';
-        }else{
-            location.href = './pc/index.html';
+    <script src="//libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+    <script src="//libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//libs.baidu.com/json/json2/json2.js"></script>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script src="./static/js/common_func.js"></script>
+    <link href="//libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"></link>
+    <style>
+        /* 头部CSS */
+        body{
+            background-color: #f0f0f0;
         }
-    </script>
-    
+        .my-scrollview{
+            height:auto;
+            width:800px;
+            margin: 0 auto;
+            background-color:#ffffff;
+        }
+        .my-scrollview .head-view{
+            height:200px;
+            width:100%;
+            background-color: #90EE90;
+        }
+        .my-scrollview .head-view .head-image{
+            height: 80px;
+            width: 80px;
+            margin: 0 auto;
+        }
+        .my-scrollview .head-view .head-image img{
+            height: 80px;
+            width: 80px;
+            border-radius: 40px;
+        }
+        .my-scrollview .head-view .head-title{
+            margin-top: 10px;
+            height: 25px;
+            width: 100%;
+            text-align: center;
+            color: #000000;
+            font-size: 25px;
+        }
+        .my-scrollview .head-view .head-subtitle{
+            margin-top: 15px;
+            height: 15px;
+            width: 100%;
+            text-align: center;
+            color: #333333;
+            font-size: 15px;
+        }
+
+        .my-scrollview .table-view{
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+        }
+        .my-scrollview .table-view .table-cell{
+            width: 100%;
+            height: 80px;
+            background-color: white ;
+        }
+        .my-scrollview .table-view .table-cell .title{
+            width: 740px;
+            height: 30px;
+            margin-left: 30px;
+            text-align: left;
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 15px;
+            display:block;
+            word-break:keep-all;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            color: black;
+        }
+        .my-scrollview .table-view .table-cell .time-view{
+            width: 740px;
+            height: 30px;
+            margin-left: 30px;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #a0a0a0;
+            display:block;
+            word-break:keep-all;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .my-scrollview .table-view .table-line{
+            width: 100%;
+            height: 1px;
+            background-color: #f0f0f0;
+        }
+
+        /*分页*/
+        .my-scrollview .page-view{
+            width: 700px;
+            height: auto;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="my-scrollview">
+    <div class="head-view">
+        <div style="height:25px;width:100%;"></div>
+        <div class="head-image">
+            <img src="https://zzbcsy.github.io/data/images/head_image.jpg">
+        </div>
+        <div class="head-title">ZZB博客</div>
+        <div class="head-subtitle">生命太短暂，不要去做一些根本没有人想要的东西</div>
+    </div>
+
+    <div class="table-view">
+
+    </div>
+
+    <div class="page-view">
+        <ul class="pagination">
+
+        </ul>
+    </div>
+</div>
+
 </body>
-</html> 
+
+<script>
+    $(document).ready(function(){
+        // 获取文章数据
+        var url = "https://zzbcsy.github.io/data/file_data/acticle_list.txt";
+        var htmlobj= $.ajax({url:url,async:false});
+        var acticleList = JSON.parse(htmlobj.responseText);
+        acticleList = acticleList.reverse();
+
+        // 计算分页并加载分页
+        var totalActicle   = acticleList.length;
+        var pageNumActicle = parseInt(totalActicle/15) + 1;
+        function selectPageIndex(pageIndex) {
+            loadActicleToHtml(pageIndex);
+            var paginationHtml = "";
+            for(var i=1;i<=pageNumActicle;i++){
+                if( pageIndex == 1 ) {
+                    paginationHtml += '<li class="active" onclick="selectPageIndex('+i+')"><a href="#">'+i+'</a></li>';
+                }
+                else{
+                    paginationHtml += '<li onclick="selectPageIndex('+i+')"><a href="#">'+i+'</a></li>';
+                }
+            }
+            $('.pagination').html(paginationHtml);
+        }
+
+        // 加载数据
+        function loadActicleToHtml(pageIndex) {
+            var acticleHtml = "";
+            for(var i=0;i<15;i++){
+                var index = i+(pageIndex-1)*15;
+                if(index < totalActicle){
+                    acticleHtml += '' +
+                        '<a href="detail.html?id='+acticleList[index].id+'">' +
+                        '<div class="table-cell">' +
+                        '<div class="title">'+acticleList[index].title+'</div>' +
+                        '<div class="time-view">' +
+                        '<span class="glyphicon glyphicon-calendar"></span> ' + acticleList[index].time +
+                        '&emsp;<span class="glyphicon glyphicon-user"></span> ZhangZhenBin' +
+                        '&emsp;<span class="glyphicon glyphicon-book"></span> ' + acticleList[index].category +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="table-line"></div>' +
+                        '</a>';
+                }
+            }
+            $('.table-view').html(acticleHtml)
+        }
+        selectPageIndex(1);
+
+    });
+</script>
+</html>
+
+
+
+
+
+
+
+
