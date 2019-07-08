@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2096ce82-d3a4-4066-885f-b247f9d39a8e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/file_detail/acticle_1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/file_detail/acticle_2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pc/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/file_data/acticle_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/file_data/acticle_list.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/third_party/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pc/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/pc/detail.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pc/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="300">
+              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#51#57#1" expanded="true" />
@@ -109,7 +103,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="58" />
-    <option name="y" value="79" />
+    <option name="y" value="36" />
     <option name="width" value="1218" />
     <option name="height" value="819" />
   </component>
@@ -213,12 +207,12 @@
       <workItem from="1562314043329" duration="4793000" />
       <workItem from="1562375313293" duration="1605000" />
       <workItem from="1562377927122" duration="5352000" />
-      <workItem from="1562384875431" duration="188000" />
+      <workItem from="1562384875431" duration="456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11938000" />
+    <option name="totallyTimeSpent" value="12206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="58" y="79" width="1218" height="819" extended-state="0" />
@@ -292,8 +286,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pc/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="300">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#51#57#1" expanded="true" />
