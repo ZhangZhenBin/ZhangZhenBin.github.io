@@ -107,7 +107,7 @@
 
 
         .back-home{
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             right: 10px;
             width: 60px;
@@ -154,7 +154,7 @@
         var url = "https://zzbcsy.github.io/data/file_data/acticle_list.txt";
         var htmlobj= $.ajax({url:url,async:false});
         var acticleList = JSON.parse(htmlobj.responseText);
-        console.log(acticleList);
+        acticleList = acticleList.reverse();
 
         // 解析数据
         var acticleId = requestUrlGetQueryKey('id');

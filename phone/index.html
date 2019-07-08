@@ -140,7 +140,7 @@
         var url = "https://zzbcsy.github.io/data/file_data/acticle_list.txt";
         var htmlobj= $.ajax({url:url,async:false});
         var acticleList = JSON.parse(htmlobj.responseText);
-        console.log(acticleList);
+        acticleList = acticleList.reverse();
 
         // 计算分页并加载分页
         var totalActicle   = acticleList.length;
