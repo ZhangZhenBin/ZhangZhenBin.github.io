@@ -126,7 +126,7 @@
     <div class="head-view">
         <div style="height:25px;width:100%;"></div>
         <div class="head-image">
-            <img src="../data/images/head_image.jpg">
+            <img src="https://zzbcsy.github.io/data/images/head_image.jpg">
         </div>
         <div class="head-title">ZZB博客</div>
         <div class="head-subtitle">生命太短暂，不要去做一些根本没有人想要的东西</div>
@@ -150,7 +150,7 @@
 <script>
     $(document).ready(function(){
         // 获取文章数据
-        var url = "../data/file_data/acticle_list.txt";
+        var url = "https://zzbcsy.github.io/data/file_data/acticle_list.txt";
         var htmlobj= $.ajax({url:url,async:false});
         var acticleList = JSON.parse(htmlobj.responseText);
         console.log(acticleList);
@@ -173,7 +173,7 @@
         if(!acticleNow) {
             location.href = "./index.html";
         }
-        var acticleUrl = "../data/"+acticleNow.url;
+        var acticleUrl = "https://zzbcsy.github.io/data/"+acticleNow.url;
         var acticleHtml = $.ajax({url:acticleUrl,async:false});
         var acticleContext = acticleHtml.responseText;
         // 渲染html
